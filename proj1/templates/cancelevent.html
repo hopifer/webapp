@@ -1,0 +1,20 @@
+{% extends "temp.html" %}
+{% block body %}
+{% if error %}Error:{{ error }}</div>{% endif %}
+    {% if g.user %}
+        <div>
+            <h3>Delete an event {{ g.user.username }}!</h3>
+            <form action="{{ url_for('deleteevent') }}" method="post">
+                <dl>
+                    <dt>Title of event?
+                    <dd><input type="text" name="Title" size="60"><!-- db.session.add(Event(request.form['Title'], request.form['description'], request.form['start'], request.form['end'], session['id']))
+    
+                    -->
+
+                </dl>
+                            
+                <input type="submit" value="Delete">
+                </form>
+            </div>
+    {% endif %}
+    {% endblock %}

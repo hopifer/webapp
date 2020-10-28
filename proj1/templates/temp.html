@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<title>Hope's Event Manager</title>
+<div class="page">
+    <h1>HOPE'S EVENT MANAGER</h1>
+    <div class="navigation">
+    {% if g.user %}
+      <a href="{{ url_for('priv') }}">My Events</a> |
+      <a href="{{ url_for('home') }}">Public Event Page</a> |
+      <a href="{{ url_for('logout') }}">Log Out {{ g.user.username }}</a> |
+      <a href="{{ url_for('addevent') }}">Host New Event [{{ g.user.username }}]</a> |
+      <a href="{{ url_for('deleteevent') }}">Cancel Event</a>
+    {% else %}
+      <a href="{{ url_for('home') }}">Public Timeline</a> |
+      <a href="{{ url_for('signup') }}">Sign Up</a> |
+      <a href="{{ url_for('login') }}">Sign In</a>
+    {% endif %}
+<div>
+
+</div>
+</div>
+<div class="body">
+    {% block body %}{% endblock %}
+</div>
+<div class="footer">
+    Hope's Event Manager (2020)
+</div>
+</html>

@@ -1,0 +1,658 @@
+<!DOCTYPE HTML>
+<HTML>
+    <style>
+    .grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    }
+    .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    }
+    .grid-itemB {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    
+    }
+    .grid-itemI {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    }
+    .grid-itemN {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    }
+    .grid-itemG {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    }
+    .grid-itemO {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    }
+    h1{
+        text-align: center;
+    }
+    #b1,#b2,#b3,#c3{
+        display: none;
+    }
+    .dark {
+        background-color: black;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        color:white;
+        text-align: center;
+    }
+   
+  
+    </style>
+    <head>
+        
+        <title>
+            Bingo
+        </title>
+        <script type = "text/javascript">
+        var msg = "Welcome to Bingo!";
+        alert(msg); 
+        </script>
+        <h1>BINGO</h1>
+        <b>About Bingo:</b>
+        
+            <dl>
+                <dt>Every player gets at least one bingo card.</dt>
+                <dt>The format of a bingo card is as follows:</dt>
+                <dd> - The card is made up of 5 columns which each column representing the letters 'B', 'I', 'N', 'G', and 'O'.</dd>
+                <dt>Each column is labeled by the letter it represents.</dt>
+                <dt>Each column is defined as follows: </dt>
+                    <dd> - B contains 5 numbers between 1 and 15 with no duplicate numbers.</dd>
+                    <dd> - I contains 5 numbers between 16 and 30 with no duplicate numbers.</dd>
+                    <dd> - N contains 4 numbers between 31 and 45 with no duplicate numbers. In addition to the numbers, the third item in the list is a free space. The player can automatically mark off the free space. You can designate the free space however you would like on your board.</dd>
+                    <dd> - G contains 5 numbers between 46 and 60 with no duplicate numbers.</dd>
+                    <dd> - O contains 5 numbers between 61 and 75 with no duplicate numbers.</dd>
+                <dt>When you press on the call next bingo number button a call will then call out a number like "B5".</dt>
+                    <dd> - If a player has a square with the number 5 in the B column, they will mark it off.</dd>
+                <dt>A player wins when they have 5 marked squares in a row horizontally, vertically or diagonally. When they win, they shout "BINGO!"</dt>
+            </dl>
+        <br>
+
+    </head>
+    <body>
+        <div class = "grid-container">
+            <button type = "button" class="grid-item" >B</button>
+            <button type = "button" class="grid-item" >I</button>
+            <button type = "button" class="grid-item" >N</button>
+            <button type = "button" class="grid-item" >G</button>
+            <button type = "button" class="grid-item" >O</button>
+            <button type = "button" id = "a1" class="grid-itemB" onclick="toggle('a1')"  ></button>
+            <button type = "button" id = "a2" class="grid-itemI" onclick="toggle('a2')"  ></button>
+            <button type = "button" id = "a3" class="grid-itemN" onclick="toggle('a3')"  ></button>
+            <button type = "button" id = "a4" class="grid-itemG" onclick="toggle('a4')"  ></button>
+            <button type = "button" id = "a5" class="grid-itemO" onclick="toggle('a5')"  ></button>
+            <button type = "button" id = "a6" class="grid-itemB" onclick="toggle('a6')"  ></button>
+            <button type = "button" id = "a7" class="grid-itemI" onclick="toggle('a7')"  ></button>
+            <button type = "button" id = "a8" class="grid-itemN" onclick="toggle('a8')"  ></button>
+            <button type = "button" id = "a9" class="grid-itemG" onclick="toggle('a9')"  ></button>
+            <button type = "button" id = "a10" class="grid-itemO" onclick="toggle('a10')"  ></button>
+            <button type = "button" id = "a11" class="grid-itemB" onclick="toggle('a11')"  ></button>
+            <button type = "button" id = "a12" class="grid-itemI" onclick="toggle('a12')"  ></button>
+            <button type = "button" id = "a13" class="grid-itemN" onclick="toggle('a13')"  ></button>
+            <button type = "button" id = "a14" class="grid-itemG" onclick="toggle('a14')"  ></button>
+            <button type = "button" id = "a15" class="grid-itemO" onclick="toggle('a15')"  ></button>
+            <button type = "button" id = "a16" class="grid-itemB" onclick="toggle('a16')"  ></button>
+            <button type = "button" id = "a17" class="grid-itemI" onclick="toggle('a17')"  ></button>
+            <button type = "button" id = "a18" class="grid-itemN" onclick="toggle('a18')"  ></button>
+            <button type = "button" id = "a19" class="grid-itemG" onclick="toggle('a19')"  ></button>
+            <button type = "button" id = "a20" class="grid-itemO" onclick="toggle('a20')"  ></button>
+            <button type = "button" id = "a21" class="grid-itemB" onclick="toggle('a21')"  ></button>
+            <button type = "button" id = "a22" class="grid-itemI" onclick="toggle('a22')"  ></button>
+            <button type = "button" id = "a23" class="grid-itemN" onclick="toggle('a23')"  ></button>
+            <button type = "button" id = "a24" class="grid-itemG" onclick="toggle('a24')"  ></button>
+            <button type = "button" id = "a25" class="grid-itemO" onclick="toggle('a25')"  ></button>
+            <br>
+        </div>
+        <script type = "text/javascript">
+            function toggle(id){
+                var element = document.getElementById(id);
+                element.classList.toggle("dark")
+            }
+            var callerarray = null;
+
+            function dupcheck(array){
+                let seen = []
+                for(let i = 0; i<array.length;i++)
+                {
+                    let curr = array[i];
+                    if(seen.indexOf(curr)!== -1)
+                    {
+                        return true;
+                    }
+                    seen.push(curr);
+
+                }
+                return false;
+
+            }
+            function setBoard(){
+                alert("Please add strings of values formatted as B(1,2,3,4,5) then I(25,26,27,28,29)...");
+                var input = prompt("String to add for B column:");
+                var re = new RegExp( /[Bb]\(\b([1-9]|1[0-5])\b,\b([1-9]|1[0-5])\b,\b([1-9]|1[0-5])\b,\b([1-9]|1[0-5])\b,\b([1-9]|1[0-5])\b\)/gm);
+                var matches = input.match(re);
+              
+                var re2 = /,/;
+                while(matches == null ||  dupcheck(matches) == true)
+                {
+                    alert("Problem with INPUT!!");
+                    input = prompt("String to add for B column:");
+                    re = new RegExp( /[Bb]\(\b([1-9]|1[0-5])\b,\b([1-9]|1[0-5])\b,\b([1-9]|1[0-5])\b,\b([1-9]|1[0-5])\b,\b([1-9]|1[0-5])\b\)/gm);
+                    matches = input.match(re);
+                }
+                var matches2 = input.replace(/\)/gm, "");
+                var matches3 = matches2.replace(/[Bb]\(/gm, "");
+                var matches4 = matches3.split(re2);
+                /*
+                for(let i = 0; i < 5; i++)
+                {
+                    document.write(matches4[i]);
+                }
+                */
+				//document.write("match(new RegExp(\"\\\\w+\", \"g\")) finds:  ", matches, "<br /><br />", matches4);
+                //CHECK FOR DUPS HERE//****************
+
+                //I = between 16 and 30
+                var input2 = prompt("String to add for I column:");
+                var r = new RegExp( /[Ii]\(\b(1[6-9]|2[0-9]|3[0])\b,\b(1[6-9]|2[0-9]|3[0])\b,\b(1[6-9]|2[0-9]|3[0])\b,\b(1[6-9]|2[0-9]|3[0])\b,\b(1[6-9]|2[0-9]|3[0])\b\)/gm);
+                var m = input2.match(r);
+                var r2 = /,/;
+			    while(m == null || dupcheck(m) == true)
+                {
+                    alert("Problem with INPUT!!");
+                    input2 = prompt("String to add for I column:");
+                    r = new RegExp( /[Ii]\(\b(1[6-9]|2[0-9]|3[0])\b,\b(1[6-9]|2[0-9]|3[0])\b,\b(1[6-9]|2[0-9]|3[0])\b,\b(1[6-9]|2[0-9]|3[0])\b,\b(1[6-9]|2[0-9]|3[0])\b\)/gm);
+                    m = input2.match(r);
+                }
+                var m2= input2.replace(/\)/gm, "");
+                var m3 = m2.replace(/[Ii]\(/gm, "");
+                var m4 = m3.split(r2);
+                /*
+                for(let i = 0; i < 5; i++)
+                {
+                    document.write(m4[i]);
+                }
+                */
+				//document.write("match(new RegExp(\"\\\\w+\", \"g\")) finds:  ", m, "<br /><br />", m4);
+                //Check for dups here*******************
+
+                //  [Nn]\(\b(3[1-9]|4[0-5])\b,\b(3[1-9]|4[0-5])\b,[Ff]\,\b(3[1-9]|4[0-5])\b,\b(3[1-9]|4[0-5])\b\)
+
+                var input3 = prompt("String to add for N column:");
+                var rex = new RegExp( /[Nn]\(\b(3[1-9]|4[0-5])\b,\b(3[1-9]|4[0-5])\b,[Ff]\,\b(3[1-9]|4[0-5])\b,\b(3[1-9]|4[0-5])\b\)/gm);
+                var ma = input3.match(rex);
+              
+                var rex2 = /,/;
+			    while(ma == null || dupcheck(ma) == true)
+                {
+                    alert("Problem with INPUT!!");
+                    input3 = prompt("String to add for N column:");
+                    rex = new RegExp( /[Nn]\(\b(3[1-9]|4[0-5])\b,\b(3[1-9]|4[0-5])\b,[Ff]\,\b(3[1-9]|4[0-5])\b,\b(3[1-9]|4[0-5])\b\)/gm);
+                    ma = input3.match(rex);
+                }
+                var ma2= input3.replace(/\)/gm, "")
+                var ma3 = ma2.replace(/[Nn]\(/gm, "")
+                var ma4 = ma3.split(rex2);
+                /*
+                for(let i = 0; i < 5; i++)
+                {
+                    document.write(ma4[i]);
+                }
+                */
+
+                var input4 = prompt("String to add for G column:");
+                var rexp = new RegExp( /[Gg]\(\b(4[6-9]|5[0-9]|6[0])\b,\b(4[6-9]|5[0-9]|6[0])\b,\b(4[6-9]|5[0-9]|6[0])\b,\b(4[6-9]|5[0-9]|6[0])\b,\b(4[6-9]|5[0-9]|6[0])\b\)/gm);
+                var mat = input4.match(rexp);
+
+                var rexp2 = /,/;
+			    while(mat == null || dupcheck(mat) == true)
+                {
+                    alert("Problem with INPUT!!");
+                    input4 = prompt("String to add for G column:");
+                    rexp = new RegExp( /[Gg]\(\b(4[6-9]|5[0-9]|6[0])\b,\b(4[6-9]|5[0-9]|6[0])\b,\b(4[6-9]|5[0-9]|6[0])\b,\b(4[6-9]|5[0-9]|6[0])\b,\b(4[6-9]|5[0-9]|6[0])\b\)/gm);
+                    mat = input2.match(rexp);
+                }
+                var mat2= input4.replace(/\)/gm, "")
+                var mat3 = mat2.replace(/[Gg]\(/gm, "")
+                var mat4 = mat3.split(rexp2);
+                /*
+                for(let i = 0; i < 5; i++)
+                {
+                    document.write(mat4[i]);
+                }
+                */
+                var input5 = prompt("String to add for O column:");
+                var rexpr = new RegExp( /[Oo]\(\b(6[1-9]|7[0-5])\b,\b(6[1-9]|7[0-5])\b,\b(6[1-9]|7[0-5])\b,\b(6[1-9]|7[0-5])\b,\b(6[1-9]|7[0-5])\b\)/gm);
+                var matc = input5.match(rexpr);
+                var rexpr2 = /,/;
+			    while(matc == null || dupcheck(matc) == true)
+                {
+                    alert("Problem with INPUT!!");
+                    input5 = prompt("String to add for O column:");
+                    rexpr = new RegExp( /[Oo]\(\b(6[1-9]|7[0-5])\b,\b(6[1-9]|7[0-5])\b,\b(6[1-9]|7[0-5])\b,\b(6[1-9]|7[0-5])\b,\b(6[1-9]|7[0-5])\b\)/gm);
+                    matc = input5.match(rexpr);
+                }
+                var matc2= input5.replace(/\)/gm, "")
+                var matc3 = matc2.replace(/[Oo]\(/gm, "")
+                var matc4 = matc3.split(rexpr2);
+                /*
+                for(let i = 0; i < 5; i++)
+                {
+                    document.write(matc4[i]);
+                }
+                */
+                var B = document.querySelectorAll('.grid-itemB');
+                var I = document.querySelectorAll('.grid-itemI');
+                var N = document.querySelectorAll('.grid-itemN');
+                var G = document.querySelectorAll('.grid-itemG');
+                var O = document.querySelectorAll('.grid-itemO');
+            for(let i = 0; i<5; i++)
+            {
+                B[i].innerHTML = matches4[i]; //between 1 and 15 no dups
+                I[i].innerHTML = m4[i]; //between 1 and 15 no dups
+                if(i==2)
+                {
+                    N[i].innerHTML = "<span style='background-color: black; border: 1px solid rgba(0, 0, 0, 0.8); padding: 20px; font-size: 30px; color:white;text-align: center;'>free</span>";
+                }
+                else{
+                    N[i].innerHTML = ma4[i]; //between 1 and 15 no dups
+
+                }
+               
+                G[i].innerHTML = mat4[i]; //between 1 and 15 no dups
+                O[i].innerHTML = matc4[i]; //between 1 and 15 no dups
+
+
+            }
+            callerarray = new Array(75);
+                for(let i = 1; i<=15; i++)
+                {
+                   callerarray[i-1] = "B" + i.toString();
+                }
+                for(let i = 16; i<=30; i++)
+                {
+                    callerarray[i-1] = "I" + i.toString();
+                }
+                for(let i = 31; i<=45; i++)
+                {
+                    callerarray[i-1] = "N" + i.toString();
+                }
+                for(let i = 46; i<=60; i++)
+                {
+                    callerarray[i-1] = "G" + i.toString();
+                }
+                for(let i = 61; i<=75; i++)
+                {
+                    callerarray[i-1] = "O" + i.toString();
+                }
+                //document.write(callerarray.toString());
+            }
+            function randomBoard(){
+                var getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+                var newB = () => getRandomNumber(1,15);
+                var newI = () => getRandomNumber(16,30);
+                var newN = () => getRandomNumber(31,45);
+                var newG = () => getRandomNumber(46,60);
+                var newO = () => getRandomNumber(61,75);
+                
+                var Barray = new Array(5, null,null,null,null,null);
+                var Iarray = new Array(5, null,null,null,null, null); // between 16 and 30 no dups
+                var Narray = new Array(5, null,null,null,null,null);
+                var Garray = new Array(5, null,null,null,null,null);
+                var Oarray = new Array(5, null,null,null,null,null);
+
+                for(let i = 0; i<6; i++)
+                {
+                    var B = newB();
+                    var I = newI();//Math.floor(Math.random() * (30 - 16 + 1)) + 16;
+                    var G = newG();
+                    var O = newO();
+
+                    if(i == 3)
+                    {
+                        Narray[i] = "free";
+                    }
+                    else
+                    {
+                        var N = newN();
+                        while(Narray.includes(N))
+                        {
+                            N = newN();
+                        }
+                        Narray[i] = N;
+                    }
+                    while(Barray.includes(B))
+                    {
+                        B = newB();
+                    }
+                    while(Iarray.includes(I))
+                    {
+                        I = newI();//Math.floor(Math.random() * (30 - 16 + 1)) + 16;
+                    }
+                    while(Garray.includes(G))
+                    {
+                        G = newG();
+                    }
+                    while(Oarray.includes(O))
+                    {
+                        O = newO();
+                    }
+                    Barray[i] = B;
+                    Iarray[i] = I;
+                    Garray[i] = G;
+                    Oarray[i] = O;
+
+
+
+                }
+
+        
+            var B = document.querySelectorAll('.grid-itemB');
+            var I = document.querySelectorAll('.grid-itemI');
+            var N = document.querySelectorAll('.grid-itemN');
+            var G = document.querySelectorAll('.grid-itemG');
+            var O = document.querySelectorAll('.grid-itemO');
+            for(let i = 0; i<5; i++)
+            {
+                B[i].innerHTML = Barray[i+1]; //between 1 and 15 no dups
+                I[i].innerHTML = Iarray[i+1]; //between 1 and 15 no dups
+                if(i==2)
+                {
+                    N[i].innerHTML = "<span style='background-color: black; border: 1px solid rgba(0, 0, 0, 0.8); padding: 20px; font-size: 30px; color:white;text-align: center;'>free</span>";
+                }
+                else
+                {
+                    N[i].innerHTML = Narray[i+1]; //between 1 and 15 no dups
+                }
+                
+                G[i].innerHTML = Garray[i+1]; //between 1 and 15 no dups
+                O[i].innerHTML = Oarray[i+1]; //between 1 and 15 no dups
+
+
+            }
+             callerarray = new Array(75);
+                for(let i = 1; i<=15; i++)
+                {
+                    callerarray[i-1] = "B" + i.toString();
+                }
+                for(let i = 16; i<=30; i++)
+                {
+                    callerarray[i-1] = "I" + i.toString();
+                }
+                for(let i = 31; i<=45; i++)
+                {
+                    callerarray[i-1] = "N" + i.toString();
+                }
+                for(let i = 46; i<=60; i++)
+                {
+                    callerarray[i-1] = "G" + i.toString();
+                }
+                for(let i = 61; i<=75; i++)
+                {
+                    callerarray[i-1] = "O" + i.toString();
+                }
+                //document.write(callerarray.toString());
+            }
+            function randomize(array){
+                array.sort(() => Math.random() -0.5);
+            }
+            function caller(){
+                if(callerarray==null)
+                {
+                    alert("Please start a game.");
+                    return;
+                }
+                randomize(callerarray);
+                alert(callerarray[0]);
+                callerarray.shift();
+
+
+            }
+       
+            function showButtons()
+            {
+                $('#b1, #b2, #b3, #c3').show();
+            }
+            function showButtons2()
+            {
+                $('#c1, #c2').hide();
+            }
+            function showButtons3()
+            {
+                $('#c1, #c2').show();
+                $('#b1, #b2, #b3, #c3').hide();
+            }
+        </script>
+        
+              <input type = "button" id = "c1" onclick = "randomBoard(); showButtons(); showButtons2();" value = "New Random Board"/>
+              <input type = "button" id = "c2" onclick = "setBoard(); showButtons();showButtons2();" value = "Create Own Board"/>
+              <input type = "button" id = "c3" onclick = "caller()" value = "Call Next Bingo Number"/>
+              <input type = "button" id = "b1" onclick = "win(); showButtons3();" value = "I won!"/>
+              <input type = "button" id = "b2" onclick = "loss(); showButtons3();" value = "I lost."/>
+              <input type = "button" id = "b3" onclick = "newg(); showButtons3();" value = "New Score Board"/>
+
+            <div id = "wins"></div>
+            <div id = "losses"></div>
+    </body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script>
+            function newg(){
+                localStorage.setItem('win',0);
+                document.getElementById("wins").innerHTML = "You have won "+0+" times";
+                localStorage.setItem('loss',0);
+                document.getElementById("losses").innerHTML = "You have lost "+0+" times";
+           
+            }
+            
+            function win()
+            { 
+                var buttonb = document.getElementById("a1");
+                var buttonb1 = document.getElementById("a6");
+                var buttonb2 = document.getElementById("a11");
+                var buttonb3 = document.getElementById("a16");
+                var buttonb4 = document.getElementById("a21");
+
+                var styleb = getComputedStyle(buttonb);
+                var styleb1 = getComputedStyle(buttonb1);
+                var styleb2 = getComputedStyle(buttonb2);
+                var styleb3 = getComputedStyle(buttonb3);
+                var styleb4 = getComputedStyle(buttonb4);
+
+                var buttoni = document.getElementById("a2");
+                var buttoni1 = document.getElementById("a7");
+                var buttoni2 = document.getElementById("a12");
+                var buttoni3 = document.getElementById("a17");
+                var buttoni4 = document.getElementById("a22");
+
+                var stylei = getComputedStyle(buttoni);
+                var stylei1 = getComputedStyle(buttoni1);
+                var stylei2 = getComputedStyle(buttoni2);
+                var stylei3 = getComputedStyle(buttoni3);
+                var stylei4 = getComputedStyle(buttoni4);
+
+                var buttonn = document.getElementById("a3");
+                var buttonn1 = document.getElementById("a8");
+                var buttonn2 = document.getElementById("a13");
+                var buttonn3 = document.getElementById("a18");
+                var buttonn4 = document.getElementById("a23");
+                
+                var stylen = getComputedStyle(buttonn);
+                var stylen1 = getComputedStyle(buttonn1);
+                var stylen2 = getComputedStyle(buttonn2);
+                var stylen3 = getComputedStyle(buttonn3);
+                var stylen4 = getComputedStyle(buttonn4);
+
+                var buttong = document.getElementById("a4");
+                var buttong1 = document.getElementById("a9");
+                var buttong2 = document.getElementById("a14");
+                var buttong3 = document.getElementById("a19");
+                var buttong4 = document.getElementById("a24");
+                
+                var styleg = getComputedStyle(buttong);
+                var styleg1 = getComputedStyle(buttong1);
+                var styleg2 = getComputedStyle(buttong2);
+                var styleg3 = getComputedStyle(buttong3);
+                var styleg4 = getComputedStyle(buttong4);
+
+                var buttono = document.getElementById("a5");
+                var buttono1 = document.getElementById("a10");
+                var buttono2 = document.getElementById("a15");
+                var buttono3 = document.getElementById("a20");
+                var buttono4 = document.getElementById("a25");
+                
+                var styleo = getComputedStyle(buttono);
+                var styleo1 = getComputedStyle(buttono1);
+                var styleo2 = getComputedStyle(buttono2);
+                var styleo3 = getComputedStyle(buttono3);
+                var styleo4 = getComputedStyle(buttono4);
+
+                if(styleb['background-color']== 'rgb(0, 0, 0)'&&styleb1['background-color']== 'rgb(0, 0, 0)'&&styleb2['background-color']== 'rgb(0, 0, 0)'&&styleb3['background-color']== 'rgb(0, 0, 0)'&&styleb4['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                 }
+                if(stylei['background-color']== 'rgb(0, 0, 0)'&&stylei1['background-color']== 'rgb(0, 0, 0)'&&stylei2['background-color']== 'rgb(0, 0, 0)'&&stylei3['background-color']== 'rgb(0, 0, 0)'&&stylei4['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                if(stylen['background-color']== 'rgb(0, 0, 0)'&&stylen1['background-color']== 'rgb(0, 0, 0)'&&stylen3['background-color']== 'rgb(0, 0, 0)'&&stylen4['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                if(styleg['background-color']== 'rgb(0, 0, 0)'&&styleg1['background-color']== 'rgb(0, 0, 0)'&&styleg2['background-color']== 'rgb(0, 0, 0)'&&styleg3['background-color']== 'rgb(0, 0, 0)'&&styleg4['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                if(styleo['background-color']== 'rgb(0, 0, 0)'&&styleo1['background-color']== 'rgb(0, 0, 0)'&&styleo2['background-color']== 'rgb(0, 0, 0)'&&styleo3['background-color']== 'rgb(0, 0, 0)'&&styleo4['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                if(styleb['background-color']== 'rgb(0, 0, 0)'&&stylei['background-color']== 'rgb(0, 0, 0)'&&stylen['background-color']== 'rgb(0, 0, 0)'&&styleg['background-color']== 'rgb(0, 0, 0)'&&styleo['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                if(styleb1['background-color']== 'rgb(0, 0, 0)'&&stylei1['background-color']== 'rgb(0, 0, 0)'&&stylen1['background-color']== 'rgb(0, 0, 0)'&&styleg1['background-color']== 'rgb(0, 0, 0)'&&styleo1['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                if(styleb2['background-color']== 'rgb(0, 0, 0)'&&stylei2['background-color']== 'rgb(0, 0, 0)'&&styleg2['background-color']== 'rgb(0, 0, 0)'&&styleo2['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                if(styleb3['background-color']== 'rgb(0, 0, 0)'&&stylei3['background-color']== 'rgb(0, 0, 0)'&&stylen3['background-color']== 'rgb(0, 0, 0)'&&styleg3['background-color']== 'rgb(0, 0, 0)'&&styleo3['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                if(styleb4['background-color']== 'rgb(0, 0, 0)'&&stylei4['background-color']== 'rgb(0, 0, 0)'&&stylen4['background-color']== 'rgb(0, 0, 0)'&&styleg4['background-color']== 'rgb(0, 0, 0)'&&styleo4['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                if(styleb['background-color']== 'rgb(0, 0, 0)'&&stylei1['background-color']== 'rgb(0, 0, 0)'&&styleg3['background-color']== 'rgb(0, 0, 0)'&&styleo4['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                if(styleb4['background-color']== 'rgb(0, 0, 0)'&&stylei3['background-color']== 'rgb(0, 0, 0)'&&styleg1['background-color']== 'rgb(0, 0, 0)'&&styleo['background-color']== 'rgb(0, 0, 0)')
+                {
+                    alert("BINGO!");
+                    var wow = localStorage.getItem('win');
+                    var wow1 = parseInt(wow) + 1;
+                    localStorage.setItem('win',wow1);
+                    document.getElementById("wins").innerHTML = "You have won "+ wow1.toString() +" times";
+                    return;
+                }
+                else{
+                    alert("You didn't win! You lose for incorrectly thinking you won >:( Try a new game!");
+                    loss();
+                    
+                }
+            }
+            
+            
+            function loss()
+            { 
+                var wow = localStorage.getItem('loss');
+                var wow1 = parseInt(wow) + 1;
+                localStorage.setItem('loss',wow1);
+                document.getElementById("losses").innerHTML = "You have lost "+ wow1.toString() +" times";
+            }
+    </script>
+</HTML>

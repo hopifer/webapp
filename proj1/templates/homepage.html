@@ -1,0 +1,91 @@
+{% extends "temp.html" %}
+{% block title %}
+    {% if request.endpoint == 'home' %}
+    Homepage
+    {% elif request.endpoint == 'priv' %}
+    {{ g.user.username }}'s Page
+    
+    {% endif %}
+    
+{% endblock %}
+{% block body %}
+   
+
+    <h2>{{ self.title() }}</h2>
+    
+    {% if request.endpoint == 'home' %}
+    <h3>All events</h3>
+        <ul>
+        {% for event in events %}
+                <li>
+                    {{event.title}}
+                        <ul>
+                            <li>Description: {{event.description}}
+                            <li>Start time: {{event.startdatetime}}
+                            <li>End time: {{event.enddatetime}}
+                        </ul>
+                    
+                    
+
+                    
+
+        {% else %}
+                <li><em>There are no events so far.</em>
+        
+        {% endfor %}
+        </ul>
+    {% elif request.endpoint == 'priv' %}
+
+    <h3>Events Not Hosting:</h3>
+        <ul>
+            {% for event in events %}
+            <li>
+                {{event.title}}
+                <ul>
+                    <li>Description: {{event.description}}
+                    <li>Start time: {{event.startdatetime}}
+                    <li>End time: {{event.enddatetime}}
+                    <a class = "attend" href="{{ url_for('attend', eventid = event.id) }}">Attend event</a>
+                  
+                    </form>
+                    
+                </ul>
+            {% else %}
+                    <li><em>There are no events so far.</em>
+            
+            {% endfor %}
+        </ul>
+    <h3>Events you are hosting:</h3>
+        <ul>
+            {% for event in myevents %}
+                    <li>
+                        {{event.title}}
+                        <ul>
+                            <li>Description: {{event.description}}
+                            <li>Start time: {{event.startdatetime}}
+                            <li>End time: {{event.enddatetime}}
+                        </ul>
+            {% else %}
+                    <li><em>There are no events you are hosting so far.</em>
+            
+            {% endfor %}
+        </ul>
+    <h3>Events you are attending:</h3>
+        <ul>
+            {% for event in attendingevents %}
+                    <li>
+                        {{event.title}}
+                        <ul>
+                            <li>Description: {{event.description}}
+                            <li>Start time: {{event.startdatetime}}
+                            <li>End time: {{event.enddatetime}}
+                        </ul>
+            {% else %}
+                    <li><em>There are no events you are attending so far.</em>
+            
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
+

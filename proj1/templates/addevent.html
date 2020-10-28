@@ -1,0 +1,26 @@
+{% extends "temp.html" %}
+{% block body %}
+{% if error %}Error:{{ error }}</div>{% endif %}
+    {% if g.user %}
+        <div>
+            <h3>Let's create a new event {{ g.user.username }}!</h3>
+            <form action="{{ url_for('addevent') }}" method="post">
+                <dl>
+                    <dt>Title
+                    <dd><input type="text" name="Title" size="60"><!-- db.session.add(Event(request.form['Title'], request.form['description'], request.form['start'], request.form['end'], session['id']))
+    
+                    -->
+                    <dt>Description of Event
+                    <dd><input type="text" name='description' size="60">
+                    <dt>Start time?
+                    <dd><input type="datetime-local" name='start' size="60" value ="2020-10-12T1:20" min="2020-01-01T00:00" max="2023-01-01T00:00">
+                    <dt>End time?
+                    <dd><input type="datetime-local" name='end' size="60" value ="2020-10-12T1:20" min="2020-01-01T00:00" max="2023-01-01T00:00">
+    
+                </dl>
+                            
+                <input type="submit" value="Save">
+                </form>
+            </div>
+    {% endif %}
+    {% endblock %}
