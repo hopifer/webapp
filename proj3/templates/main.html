@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="../static/style.css">
+<!DOCTYPE html>
+<html>
+
+<head></head>
+<div class = "page">
+    <h1>Welcome {{g.user.username}}! All active chatrooms are below!</h1>
+    {% if g.user %}
+        <a href="{{ url_for('logout') }}">Log Out {{ g.user.username }}</a> 
+    {% endif %}
+    <ul>
+        {% for chatroom in chatrooms %}
+        <li>
+            <a class = "chatty" href="{{ url_for('chatting', chatroomname = chatroom.title)}}">{{chatroom.title}}</a>
+            {% if chatroom in hostrooms %}
+            <a class = "delete" href="{{ url_for('delete', chatroomname = chatroom.title)}}">Delete {{chatroom.title}}</a>
+            {% endif %}
+        {% else %}
+        <li><em>There are no chats so far.</em>
+        
+        {% endfor %}
+    </ul>
+     <a class = "makechat" href="{{ url_for('makechat')}}">Make a new chatroom</a>
+
+</div>
+
+</html>

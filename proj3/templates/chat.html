@@ -1,0 +1,42 @@
+{% if error %}Error:{{ error }}</div>
+<link rel="stylesheet" type="text/css" href="../static/style.css">
+<a href="{{ url_for('lobby') }}">Chat was Deleted. Click here.</a>
+{% endif %}
+{% if g.user %}
+
+
+<a href="{{ url_for('logout') }}">Log Out {{ g.user.username }}</a> 
+<a href="{{ url_for('lobby') }}">Leave Chat And Go Back to Lobby</a>
+<title id = "titl">{{chatroommy}}</title> 
+<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+<body>
+
+		<table id="theTable">
+			{% for i in messengers %}
+				<tr>
+
+					<td>{{ i.text }}</td>
+					
+				</tr>
+			{% else %}
+				<tr><td>Whole lot of nothing!</td></tr>
+			{% endfor %}
+		</table>
+
+<label for="msg"><b>Message</b></label>
+<div></div>
+
+
+Who's the Message From?:
+<input type="text" name="user" placeholder = "Anonymous" id = "user" size="30">
+Message: 
+<input type="text" name="messagey" id = "messagey" size="30">
+
+{% endif %}
+
+<div class = "actions"><input id = "theButton" type="submit" value = "Submit form!"></div>
+
+</body>
+<script>
+
+</script>

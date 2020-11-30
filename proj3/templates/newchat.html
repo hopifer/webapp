@@ -1,0 +1,34 @@
+<html>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    {% if g.user %}
+    <a href="{{ url_for('logout') }}">Log Out {{ g.user.username }}</a> 
+    {% else %}
+    <h1>No one logged in!</h1>
+    {% endif %}
+{% block body %}
+{% if error %}Error:{{ error }}</div>{% endif %}
+    {% if g.user %}
+        <div id =  "demo">
+            <body>
+ 
+        </body>
+        </div>
+            <form action="{{ url_for('makechat') }}" method="post">
+                <dl>
+                    <dt>Title
+                    <dd><input type="text" name="Title" size="60"><!-- db.session.add(Event(request.form['Title'], request.form['description'], request.form['start'], request.form['end'], session['id']))
+    
+                    -->
+              
+                </dl>
+                            
+                <input type="submit" value="Save" >
+                </form>
+            </div>
+    {% endif %}
+
+    {% endblock %}
+
+
+
+</html>
