@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="../static/style.css">
+<html>
+    <a href="{{ url_for('logout') }}">Log Out</a> 
+  <head>
+
+    <h1 id="date"></h1>
+    <title>Purchases</title>
+
+  </head>
+
+  <body>
+
+      <header>
+
+      </header>
+
+      <section>
+
+      </section>
+
+<script>
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() ;
+d = n.getDate();
+var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+m = monthArr[m];
+document.getElementById("date").innerHTML = m + "'s Purchases";
+
+
+const header = document.querySelector('header');
+const section = document.querySelector('section');
+let requestURL = '/purchase';
+let request = new XMLHttpRequest();
+request.open('GET', requestURL);
+console.log("AJAX poll for /purchases")
+request.responseType = 'json';
+request.send();
+
+request.onload = function() {
+    const purchases = request.response;
+    showBudgets(purchases);
+  }
+
+  function showBudgets(obj) {
+    const purchases = obj;
+        
+    for (let i = 0; i < purchases.length; i++) {
+      const myArticle = document.createElement('article');
+      const myH2 = document.createElement('h2');
+      const myPara1 = document.createElement('p');
+      const myPara2 = document.createElement('p');
+  
+      myH2.textContent = purchases[i].name_of_purchase;
+      myPara1.textContent = 'Purchase amount: ' + purchases[i].amount;
+      myPara2.textContent = 'Budget of purchase: ' + purchases[i].budget;
+      
+   
+      
+      myArticle.appendChild(myH2);
+      myArticle.appendChild(myPara1);
+      myArticle.appendChild(myPara2);
+
+      section.appendChild(myArticle);
+    }
+  }
+</script>
+
+{% block body %}
+{% if error %}Error:{{ error }}</div>{% endif %}
+    {% if g.user %}
+        <div>
+            <h3>Let's create a new purchase {{ g.user.username }}!</h3>
+            <form action="{{ url_for('addpurchase') }}" method="post">
+                <dl>
+                    <dt>Name of Purchase:
+                    <dd><input type="text" name="name_of_purchase" size="60"><!-- db.session.add(Event(request.form['Title'], request.form['description'], request.form['start'], request.form['end'], session['id']))
+    
+                    -->
+                    <dt>Amount of purchase
+                    <dd><input type="number" name='amount' size="60">
+                    <dt>Date of purchase (Please format as "mm/dd/yy"):
+                    <dd><input type="text" name='date' size="60">
+                    <dt>Budget category of purchase (Add "Unknown" to not add to a category yet)
+                    <dd><input type="text" name='budget' size="60">
+                </dl>
+                            
+                <input type="submit" value="Save" onclick = "posting()">
+                </form>
+            </div>
+    {% endif %}
+    {% endblock %}
+    <a href="{{ url_for('addbudget')}}">Add and View Budgets</a> 
+
+    <script>
+        function posting() {
+          console.log("AJAX poll for /purchases");
+        }
+        </script>
+</html>

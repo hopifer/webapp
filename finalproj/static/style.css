@@ -1,0 +1,44 @@
+body {
+    background: rgb(167, 141, 240);
+    font-family: 'OCR A Std, monospace';
+    font-size: 15px;
+ 
+
+
+}
+
+a {
+    
+    color: #000000;
+
+    
+    
+}
+a:hover{
+    background-color: white;
+    cursor: pointer;
+}
+
+
+h1{
+    text-align: center;
+    background: white;
+    padding: 2%;
+    text-transform:uppercase;
+    margin-bottom: 40px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+body{
+    margin-top: 40px;
+    text-align: left;
+    padding:10px
+}
+input[type="text"],
+input[type="password"] {
+    background: white;
+    border: 1px solid white;
+    padding: 2px;
+}
+

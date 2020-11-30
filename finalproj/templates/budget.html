@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+  <head>
+    {% if g.user %}
+    <a href="{{ url_for('logout') }}">Log Out</a> 
+    <h1 id="date"></h1>
+
+    <title>Budgetting</title>
+
+  </head>
+
+  <body>
+
+      <header>
+
+      </header>
+
+      <section>
+
+      </section>
+
+<script>
+
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() ;
+d = n.getDate();
+var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+m = monthArr[m];
+document.getElementById("date").innerHTML = m + "'s Budgets";
+
+
+const header = document.querySelector('header');
+const section = document.querySelector('section');
+let requestURL = '/cat';
+let request = new XMLHttpRequest();
+request.open('GET', requestURL);
+console.log("AJAX poll for /cats");
+request.responseType = 'json';
+request.send();
+
+request.onload = function() {
+    const cats = request.response;
+    showBudgets(cats);
+  }
+
+  function showBudgets(obj) {
+    const budgets = obj;
+        
+    for (let i = 0; i < budgets.length; i++) {
+      const myArticle = document.createElement('article');
+      const myH2 = document.createElement('h2');
+      const myPara1 = document.createElement('p');
+      myH2.textContent = budgets[i].budgetname;
+      myPara1.textContent = 'Budget amount: $' + budgets[i].budgetamount;
+  
+      
+      if(budgets[i].budgetname == "Unknown")
+      {
+        myH2.textContent = "Uncategorized purchases";
+        myPara1.textContent = "Total amount of uncategorized purchases: $" + budgets[i].budgetamount;
+      }
+      
+        
+      if(budgets[i].budgetamount<=0 &&budgets[i].budgetname != "Unknown" )
+      {
+            myPara1.textContent = 'Budget amount: $' + budgets[i].budgetamount + " OVERSPENT";
+      }
+      myArticle.appendChild(myH2);
+      myArticle.appendChild(myPara1);
+
+
+        var a = document.createElement('a');
+        a.onclick = function(){deleteE()};
+        function deleteE() {
+            location.replace("/cat/" + budgets[i].id);
+            //location.replace("/cats")
+        }
+        var linkText = document.createTextNode("Delete " + budgets[i].budgetname);
+        a.appendChild(linkText);
+        a.title = "Delete" + budgets[i].budgetname;
+       
+      
+      
+      
+      
+      if(budgets[i].budgetname != "Unknown")
+      {
+        myArticle.appendChild(a);
+
+      }
+      
+
+      section.appendChild(myArticle);
+    }
+  }
+</script>
+
+{% block body %}
+{% if error %}Error:{{ error }}</div>{% endif %}
+    {% if g.user %}
+        <div>
+            <h3>Let's create a new budget {{ g.user.username }}!</h3>
+            <form action="{{ url_for('addbudget') }}" method="post">
+                <dl>
+                    <dt>Name of Budget:
+                    <dd><input type="text" name="budgetname" size="60"><!-- db.session.add(Event(request.form['Title'], request.form['description'], request.form['start'], request.form['end'], session['id']))
+    
+                    -->
+                    <dt>Amount of budget
+                    <dd><input type="number" name='budgetamount' size="60">
+               
+                </dl>
+                            
+                <input type="submit" value="Save" onclick = "posting()">
+                </form>
+            </div>
+    {% endif %}
+    {% endblock %}
+    <a href="{{ url_for('addpurchase')}}">Add and View Purchases</a> 
+    <script>
+        function posting() {
+          console.log("AJAX poll for /cats");
+        }
+        </script>
+{% else %}
+<a href="{{ url_for('signup') }}">Sign up</a> 
+<a href="{{ url_for('login') }}">Login</a> 
+{% endif %}
+
+
+</html>
